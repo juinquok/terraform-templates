@@ -5,8 +5,9 @@ module "s3" {
 }
 
 module "api_gateway" {
-  source           = "./modules/api_gateway"
-  namespace        = var.namespace
-  upload_bucket_id = module.s3.upload_bucket_id
-  aws_region       = var.region
+  source            = "./modules/api_gateway"
+  namespace         = var.namespace
+  upload_bucket_id  = module.s3.upload_bucket_id
+  aws_region        = var.region
+  upload_bucket_arn = module.s3.upload_bucket_arn
 }

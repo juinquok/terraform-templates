@@ -28,20 +28,6 @@ data "aws_iam_policy_document" "gateway_s3_policy" {
     actions = [
       "s3:PutObject"
     ]
-    resources = ["*"]
-  }
-
-  statement {
-    effect = "Allow"
-    actions = [
-      "logs:CreateLogGroup",
-      "logs:CreateLogStream",
-      "logs:DescribeLogGroups",
-      "logs:DescribeLogStreams",
-      "logs:PutLogEvents",
-      "logs:GetLogEvents",
-      "logs:FilterLogEvents"
-    ]
-    resources = ["*"]
+    resources = ["${var.upload_bucket_arn}"]
   }
 }
